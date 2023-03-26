@@ -4,7 +4,7 @@ Our code can be used in conjunction with the OpenGait framework.
 OpenGait (https://github.com/ShiqiYu/OpenGait)
 
 # Prerequires
-- python 3.7
+- Python 3.7
 - GPU
 - Pytorch
 - Torchvision
