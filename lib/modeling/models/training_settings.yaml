@@ -1,0 +1,16 @@
+GaitSCM
+
+Ablation Experiment [Stage 1]: pretrain featrure extraction module
+1. We freeze the parameters of the feature disentanglement module and backdoor adjustment module.
+2. The feature disentanglement module (Stage 2) and backdoor adjustment (Stage 3) are not used.
+
+Ablation Experiment [Stage 2]: featrure disentanglement module
+1. We unfreeze the parameters of the feature disentanglement module.
+2. The feature disentanglement module (Stage 2) is used.
+3. The backdoor adjustment (Stage 3) is not used.
+
+Ablation Experiment [Stage 3]: backdoor adjustment module
+1. We unfreeze the parameters of the feature disentanglement module and backdoor adjustment module.
+2. The feature disentanglement module (Stage 2) and backdoor adjustment (Stage 3) are used.
+
+

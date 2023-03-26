@@ -1,0 +1,29 @@
+GaitSCM Loss Functions
+
+Ablation Experiment [Stage 1]: pretrain featrure extraction module
+1. base_softmax.py
+2. base_triplet.py
+
+Ablation Experiment [Stage 2]: featrure disentanglement module
+1. disentangle_softmax_id.py
+2. disentangle_softmax_nonid.py
+3. disentangle_triplet_id.py
+4. disentangle_triplet_nonid.py
+5. disentangle_conf_id_casiab.py (for CASIA-B Dataset)
+   disentangle_conf_id_oumvlp.py (for OU-MVLP Dataset)
+6. disentangle_conf_nonid_casiab.py (for CASIA-B Dataset)
+   disentangle_conf_nonid_oumvlp.py (for OU-MVLP Dataset)
+
+Ablation Experiment [Stage 3]: backdoor adjustment module
+1. disentangle_softmax_id.py
+2. disentangle_softmax_nonid.py
+3. disentangle_triplet_id.py
+4. disentangle_triplet_nonid.py
+5. disentangle_conf_id_casiab.py (for CASIA-B Dataset)
+   disentangle_conf_id_oumvlp.py (for OU-MVLP Dataset)
+6. disentangle_conf_nonid_casiab.py (for CASIA-B Dataset)
+   disentangle_conf_nonid_oumvlp.py (for OU-MVLP Dataset)
+7. casual_softmax_id.py
+8. casual_triplet_id.py
+
+
