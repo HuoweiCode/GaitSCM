@@ -1,0 +1,91 @@
+data_cfg:
+  dataset_name: OUMVLP
+  dataset_root: your data path
+  dataset_partition: ./misc/partitions/OUMVLP.json
+  num_workers: 1
+  remove_no_gallery: false
+  test_dataset_name: OUMVLP
+
+evaluator_cfg:
+  enable_distributed: true
+  enable_float16: false
+  restore_ckpt_strict: true
+  restore_hint: 445000
+  save_name: GaitSCM_OUMVLP
+  sampler:
+    batch_size: 2
+    sample_type: all_ordered
+    type: InferenceSampler
+
+
+loss_cfg:
+  - loss_term_weights: 1.0
+    margin: 0.2
+    type: TripletLoss_Dis_ID
+    log_prefix: disentangle_triplet_id
+  - loss_term_weights: 1.0
+    margin: 0.2
+    type: TripletLoss_Dis_NonID
+    log_prefix: disentangle_triplet_nonid
+  - loss_term_weights: 1.0
+    scale: 1
+    type: CrossEntropyLoss_Dis_ID
+    log_accuracy: true
+    label_smooth: true
+    log_prefix: disentangle_softmax_id
+  - loss_term_weights: 1.0
+    scale: 1
+    type: CrossEntropyLoss_Dis_NonID
+    log_accuracy: true
+    label_smooth: true
+    log_prefix: disentangle_softmax_nonid
+  - loss_term_weights: 0.3
+    scale: 1
+    type: CrossEntropyLoss_Dis_CONF_ID_OUMVLP
+    log_accuracy: true
+    label_smooth: true
+    log_prefix: disentangle_conf_id_oumvlp
+  - loss_term_weights: 0.3
+    scale: 1
+    type: CrossEntropyLoss_Dis_CONF_NonID_OUMVLP
+    log_accuracy: true
+    label_smooth: true
+    log_prefix: disentangle_conf_nonid_oumvlp
+
+
+model_cfg:
+  model: GaitSCM_OUMVLP
+  channels: [32, 64, 128, 256]
+  class_num: 5153
+
+optimizer_cfg:
+  lr: 1.0e-5
+  solver: Adam
+  weight_decay: 0
+
+
+scheduler_cfg:
+  gamma: 0.1
+  milestones:
+    - 390000
+  scheduler: MultiStepLR
+
+trainer_cfg:
+  enable_distributed: true
+  enable_float16: false
+  log_iter: 1000
+  restore_ckpt_strict: true
+  restore_hint: 210000
+  save_iter: 10000
+  save_name: GaitSCM_OUMVLP
+  sync_BN: true
+  total_iter: 445000
+  sampler:
+    batch_shuffle: true
+    batch_size:
+      - 32
+      - 8
+    frames_num_fixed: 30
+    frames_skip_num: 0
+    sample_type: fixed_ordered
+    type: TripletSampler
